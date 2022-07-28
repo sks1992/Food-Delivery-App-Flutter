@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomRowWidgets(scaffoldKey: scaffoldKey),
+                CustomRowAppBarWidgets(scaffoldKey: scaffoldKey),
                 const SizedBox(height: 20),
                 const Text(
                   "Hits of The week",

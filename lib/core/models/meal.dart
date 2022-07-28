@@ -5,9 +5,18 @@ class Meal {
   final double price;
   final String imageUrl;
   final String category;
-  final String calories;
+  final int calories;
+  final String fullDescription;
+  final int grams;
+  final int proteins;
+  final int fats;
+  final int crabs;
 
-  Meal( {
+  Meal({
+    required this.grams,
+    required this.proteins,
+    required this.fats,
+    required this.crabs,
     required this.id,
     required this.name,
     required this.description,
@@ -15,5 +24,6 @@ class Meal {
     required this.imageUrl,
     required this.category,
     required this.calories,
+    required this.fullDescription,
   });
 }

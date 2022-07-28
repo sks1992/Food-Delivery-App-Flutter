@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomRowWidgets extends StatelessWidget {
-  const CustomRowWidgets({
+class CustomRowAppBarWidgets extends StatelessWidget {
+  const CustomRowAppBarWidgets({
     Key? key,
     required this.scaffoldKey,
   }) : super(key: key);

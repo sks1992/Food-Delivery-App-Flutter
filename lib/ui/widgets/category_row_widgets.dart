@@ -41,7 +41,7 @@ class CategoryRowWidgets extends StatelessWidget {
               ),
               const SizedBox(
                 width: 10.0,
-              )
+              ),
             ],
           );
         },
