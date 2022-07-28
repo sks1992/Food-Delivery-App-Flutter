@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.black),
           ),
 
-          FoodPageViewCard(),
+          const FoodPageViewCard(),
           ],
         ),
       ),

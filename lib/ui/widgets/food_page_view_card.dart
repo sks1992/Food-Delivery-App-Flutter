@@ -14,6 +14,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
   PageController pageController = PageController();
 
   var currentPageValue = 0.0;
+  var isSelected= 0;
 
   @override
   void initState() {
@@ -56,9 +57,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
             activeDotDecoration: DotDecoration(
               width: MediaQuery.of(context).size.width / 4 - 20,
               height: 12,
-              color: Colors.indigo,
-              rotationAngle: 180,
-              verticalOffset: -10,
+              color: Colors.black,
               borderRadius: BorderRadius.circular(24),
             ),
             dotDecoration: DotDecoration(
@@ -66,10 +65,9 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
               height: 12,
               color: Colors.grey,
               borderRadius: BorderRadius.circular(16),
-              verticalOffset: 0,
             ),
             spacing: 6.0,
-            inActiveColorOverride: (i) => colors[i],
+           // inActiveColorOverride: (i) => colors[i],
           ),
         ),
       ],

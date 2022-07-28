@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_delivery_app/app_route.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,9 @@ class FoodDeliveryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
