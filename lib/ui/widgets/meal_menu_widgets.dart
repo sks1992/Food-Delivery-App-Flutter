@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../core/util/constants.dart';
 import 'meal_detail_widgets.dart';
@@ -17,6 +18,7 @@ class MealMenuWidgets extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
+            splashColor: Colors.green,
             onTap: () {
               showModalBottomSheet(
                 shape: const RoundedRectangleBorder(
@@ -41,11 +43,11 @@ class MealMenuWidgets extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   child: Image.asset(
                     "assets/images/${mealData[index].imageUrl}",
-                    width: 170,
+                    width: Get.width *0.35,
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
+                 SizedBox(
+                  width: Get.width *0.05,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +57,8 @@ class MealMenuWidgets extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w700),
                     ),
-                    const SizedBox(
-                      height: 30,
+                     SizedBox(
+                      height:  Get.height *0.03,
                     ),
                     Row(
                       children: [
@@ -83,8 +85,8 @@ class MealMenuWidgets extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 10,
+                         SizedBox(
+                          width:  Get.width *0.02,
                         ),
                         Text(
                           "${mealData[index].calories}kcal",

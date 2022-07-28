@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/controller/meal__controller.dart';
 import '../../core/util/constants.dart';
 import 'add_card_widget.dart';
 import 'item_row_widgets.dart';
 
 class MealDetailWidgets extends StatelessWidget {
-  const MealDetailWidgets({Key? key, required this.index}) : super(key: key);
+  MealDetailWidgets({Key? key, required this.index}) : super(key: key);
 
   final int index;
+
+  final MealController _controller =
+      Get.put(MealController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class MealDetailWidgets extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   child: Image.asset(
                     "assets/images/${mealData[index].imageUrl}",
-                    width: 170,
+                    width: Get.width * 0.42,
                   ),
                 ),
               ],
@@ -130,27 +134,42 @@ class MealDetailWidgets extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                   ),
                   width: Get.width * 0.35,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.remove,
+                  child: Obx(
+                    () => Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            if (_controller.count.value > 1) {
+                              _controller.count.value =
+                                  _controller.decrease(_controller.count.value);
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.remove,
+                          ),
                         ),
-                      ),
-                      const Text("1"),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add,
+                        Text(
+                          _controller.count.value.toString(),
+                          style: const TextStyle(fontSize: 20),
                         ),
-                      ),
-                    ],
+                        IconButton(
+                          onPressed: () {
+                            if (_controller.count.value < 30) {
+                              _controller.count.value =
+                                  _controller.increase(_controller.count.value);
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.add,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(
                   onTap: () {
-                    //todo Add logic
+                    _controller.insertItem(mealData[index]);
                     Get.back();
                     showModalBottomSheet(
                       shape: const RoundedRectangleBorder(
@@ -185,9 +204,11 @@ class MealDetailWidgets extends StatelessWidget {
                         SizedBox(
                           width: Get.width * 0.03,
                         ),
-                        Text(
-                          "\$ ${mealData[index].price}",
-                          style: const TextStyle(color: Colors.white),
+                        Obx(
+                          () => Text(
+                            "\$ ${mealData[index].price * _controller.count.value}",
+                            style: const TextStyle(color: Colors.white),
+                          ),
                         ),
                       ],
                     ),

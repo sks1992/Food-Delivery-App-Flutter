@@ -40,7 +40,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
         SizedBox(
           height: 320,
           child: PageView.builder(
-            physics:const BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             controller: pageController,
             itemCount: mealData.length,
             itemBuilder: (context, index) {
@@ -91,7 +91,16 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
                 margin: const EdgeInsets.only(left: 5, right: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: index.isEven ? Colors.yellow : Colors.blue,
+                 // color: index.isEven ? Colors.yellow : Colors.blue,
+                  gradient: index.isEven
+                      ? LinearGradient(
+                          colors: [Colors.blue.withOpacity(0.4), Colors.blue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight)
+                      : LinearGradient(
+                          colors: [Colors.yellow.withOpacity(0.4), Colors.yellow],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight),
                 ),
               ),
             ),

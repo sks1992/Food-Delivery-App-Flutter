@@ -5,6 +5,7 @@ import '../../core/util/constants.dart';
 class CategoryRowWidgets extends StatelessWidget {
   const CategoryRowWidgets({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
