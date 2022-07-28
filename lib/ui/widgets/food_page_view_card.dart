@@ -14,7 +14,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
   PageController pageController = PageController();
 
   var currentPageValue = 0.0;
-  var isSelected= 0;
+  var isSelected = 0;
 
   @override
   void initState() {
@@ -40,8 +40,9 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
         SizedBox(
           height: 320,
           child: PageView.builder(
+            physics:const BouncingScrollPhysics(),
             controller: pageController,
-            itemCount: foodList.length,
+            itemCount: mealData.length,
             itemBuilder: (context, index) {
               return _buildPageItems(index);
             },
@@ -52,22 +53,22 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
         ),
         SmoothPageIndicator(
           controller: pageController,
-          count: foodList.length,
+          count: mealData.length,
           effect: CustomizableEffect(
             activeDotDecoration: DotDecoration(
-              width: MediaQuery.of(context).size.width / 4 - 20,
+              width: MediaQuery.of(context).size.width / mealData.length - 20,
               height: 12,
               color: Colors.black,
               borderRadius: BorderRadius.circular(24),
             ),
             dotDecoration: DotDecoration(
-              width: MediaQuery.of(context).size.width / 4 - 20,
+              width: MediaQuery.of(context).size.width / mealData.length - 20,
               height: 12,
               color: Colors.grey,
               borderRadius: BorderRadius.circular(16),
             ),
             spacing: 6.0,
-           // inActiveColorOverride: (i) => colors[i],
+            // inActiveColorOverride: (i) => colors[i],
           ),
         ),
       ],
@@ -84,7 +85,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
               child: Container(),
             ),
             Expanded(
-              flex: 3,
+              flex: 4,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.only(left: 5, right: 5),
@@ -98,12 +99,12 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
         ),
         Positioned(
           right: 100,
-          bottom: 140,
+          bottom: 100,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Image.asset(
-              "assets/images/${foodList[index]['image']}",
-              width: 150,
+              "assets/images/${mealData[index].imageUrl}",
+              width: 190,
               //color: Colors.pink,
             ),
           ),
@@ -117,7 +118,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "${foodList[index]['message']}",
+                  mealData[index].description,
                   style: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
@@ -135,7 +136,7 @@ class _FoodPageViewCardState extends State<FoodPageViewCard> {
                   ),
                   child: Center(
                     child: Text(
-                      "\$ ${foodList[index]['price']}",
+                      "\$ ${mealData[index].price}",
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),

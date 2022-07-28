@@ -31,7 +31,7 @@ class CustomRowWidgets extends StatelessWidget {
           ),
           child: const Center(
             child: Text(
-              "100a SK Road  24 mins",
+              "100a SK Road - 24 minutes",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -42,7 +42,7 @@ class CustomRowWidgets extends StatelessWidget {
           icon:*/
         InkWell(
           onTap: () {
-            scaffoldKey.currentState?.openDrawer();
+            //ToDO Add Functionality
           },
           child: const Icon(Icons.search),
         ),
